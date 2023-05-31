@@ -1,11 +1,15 @@
 import { Card, CardActions, CardContent, CardMedia, Grid, TextField, Typography } from '@mui/material'
 import React from 'react'
 
-function ItemCardShoppingCart({item, onQuantityChange}) {
+function ItemCardShoppingCart({item, onQuantityChange, onRemoveItem}) {
 
     const handleQuantityChange = (event) => {
         const newQuantity = parseInt(event.target.value);
         onQuantityChange(item.id, newQuantity);
+    };
+    
+    const handleRemoveItem = () => {
+        onRemoveItem(item.id);
     };
 
   return (
@@ -18,8 +22,8 @@ function ItemCardShoppingCart({item, onQuantityChange}) {
             <CardMedia
                 component="img"
                 height="180px"
-                image="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80"
-                alt={item.title}
+                image={item.Image}
+                alt={item.Title}
             />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -34,7 +38,7 @@ function ItemCardShoppingCart({item, onQuantityChange}) {
                     display: 'flex',
                 }}
                 >
-                    {item.title}
+                    {item.Title}
                 </Typography>
                 <Typography sx={{
                     color: 'black',
@@ -44,14 +48,19 @@ function ItemCardShoppingCart({item, onQuantityChange}) {
                     justifyContent: 'center',
                     display: 'flex',
                 }}>
-                    Price: {item.price}
+                    Price: {item.Price}
                 </Typography>
             </CardContent>
             <CardActions >
                 <Grid container justifyContent="center">
                     <Grid item>
-                        <TextField type="number" defaultValue={1} value={item.quantity}
-                        onChange={handleQuantityChange} sx={{ width: '100px', textAlign: 'center' }} ></TextField>
+                    <TextField
+                        type="number"
+                        defaultValue={1}
+                        value={item.quantity}
+                        onChange={handleQuantityChange}
+                        sx={{ width: '100px', textAlign: 'center' }}
+                    ></TextField>
                     </Grid>
                 </Grid>
             </CardActions>
