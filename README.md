@@ -1,5 +1,6 @@
 # ElifTechStore
 Tech Task for ElifTech
+https://peaceful-mooncake-fe9aef.netlify.app/
 
 Instructions for Setting up and Running the Application:
 
